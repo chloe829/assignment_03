@@ -1,4 +1,15 @@
-Write your reflection here.
+In this assignment, I learned how to continue building data pipelines, however this time
+it was adapted into streamlit. I think I did okay with the first section, one_package.py. 
+In this section, and others, making the imports from packaging_parser and importing streamlit
+itself as st was no issue. I also was able to correctly call functions (ex: package = 
+parse_packaging(package_data)) in one_package.py which is something I noted struggling with 
+the week prior. In one_package.py, making the loop was also not too difficult. However, I started
+to struggle a bit once I got to process_file.py. I think my biggest struggle was related to using
+json, especially when it came to understanding os and using json.dump. I think an important topic
+to take away from this assignment is the use of session state, particularly in process_files.py. 
+which allows programs that need to store specific pieces of info to rerun without running into
+issues. Moving forward, I want to get more familiar with using json in a streamlit context, and
+practice importing it and writing the proper code to upload files as needed.
 
 See reflection.md for what makes a good reflection — be specific, use the
 terminology from this assignment (rerun, widget, return value, guard, bytes vs.
