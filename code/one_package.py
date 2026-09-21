@@ -25,16 +25,21 @@ package_data = st.text_input(
     placeholder="12 eggs in 1 carton / 3 cartons in 1 box",
 )
 
+if package_data != "":
+    try:
+        package = parse_packaging(package_data)
 
-if package_data != '':
+        total = calc_total_units(package)
+        unit = get_unit(package)
 
-    package = parse_packaging(package_data)
+        for p in package:
+            for name, quantity in p.items():
+                st.info(f"{name} ➡️ {quantity}")
 
-    total = calc_total_units(package)
-    unit = get_unit(package)
+        st.success(f"Total 📦 Size: {total} {unit}")
+    except ValueError:
+        st.error(
+            "Could not parse that package description. "
+            "Try a format like: 12 eggs in 1 carton / 3 cartons in 1 box"
+        )
 
-    for p in package:
-        for name, quantity in p.items():
-            st.info(f'{name} ➡️ {quantity}')
-
-    st.success(f'Total 📦 Size: {total} {unit}')

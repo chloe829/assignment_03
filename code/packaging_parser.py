@@ -48,11 +48,9 @@ def parse_packaging(packaging_data: str) -> list[dict]:
     levels = packaging_data.split("/")
 
     for level in levels:
-        # "12 eggs in 1 carton" -> the left side, "12 eggs", is this level
         left_side = level.split(" in ")[0]
         package.append(_parse_item(left_side))
 
-    # The right side of the LAST level, "1 box", is the outermost container.
     right_side = levels[-1].split(" in ")[-1]
     package.append(_parse_item(right_side))
 
