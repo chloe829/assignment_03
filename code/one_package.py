@@ -17,13 +17,6 @@ Test it: pytest tests/test_streamlit.py -k one_package
 import streamlit as st
 from packaging_parser import calc_total_units, get_unit, parse_packaging
 
-# --- The page ---------------------------------------------------------------------
-#
-# These two lines are GIVEN to you, in this app only. Read them: st.title draws the
-# heading, and st.text_input draws the box AND RETURNS whatever is in it. On the
-# very first run, before anyone has typed, that is an empty string — and the rest
-# of this script runs anyway. See README Reference #2 and #3.
-
 st.title("Process One Package")
 
 package_data = st.text_input(
@@ -32,22 +25,16 @@ package_data = st.text_input(
     placeholder="12 eggs in 1 carton / 3 cartons in 1 box",
 )
 
-# --- The work ---------------------------------------------------------------------
-
 
 if package_data != '':
-    # 1. Parse.
+
     package = parse_packaging(package_data)
 
-    # 2. Total.
     total = calc_total_units(package)
     unit = get_unit(package)
 
-    # 3. Show each level. `package` is a list of one-item dictionaries, so a loop over
-    #    it, and a loop over each item's .items(), gives you the name and quantity.
     for p in package:
         for name, quantity in p.items():
             st.info(f'{name} ➡️ {quantity}')
 
-    # 4. Show the total.
     st.success(f'Total 📦 Size: {total} {unit}')
