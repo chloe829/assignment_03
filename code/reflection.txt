@@ -8,5 +8,8 @@ to struggle a bit once I got to process_file.py. I think my biggest struggle was
 json, especially when it came to understanding os and using json.dump. I think an important topic
 to take away from this assignment is the use of session state, particularly in process_files.py. 
 which allows programs that need to store specific pieces of info to rerun without running into
-issues. Moving forward, I want to get more familiar with using json, especially json.dump,
-in a streamlit context, and practice importing it and writing the proper code to upload files as needed. 
+issues. Overall, this assignment better helped my understanding of data pipelines and this idea
+of creating code in one file that will be useful later on without having to rewrite it in
+a whole new file. Moving forward, I want to get more familiar with using json, especially 
+json.dump, in a streamlit context, and practice importing it and writing the proper code to 
+upload files as needed. 
