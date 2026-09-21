@@ -15,12 +15,7 @@ Test it: pytest tests/test_streamlit.py -k one_package
 """
 
 import streamlit as st
-
-# TODO: import the three functions this app needs from packaging_parser. Put the
-#       import here, under `import streamlit as st`:
-#
-#       from packaging_parser import calc_total_units, get_unit, parse_packaging
-
+from packaging_parser import calc_total_units, get_unit, parse_packaging
 
 # --- The page ---------------------------------------------------------------------
 #
@@ -46,16 +41,24 @@ package_data = st.text_input(
 # TODO: guard the work — an `if` on package_data, so that nothing below runs while
 #       the text box is empty. Everything that follows is indented inside it.
 
+if package_data != '':
     # 1. Parse.
     #    TODO: call parse_packaging(package_data) and store the result in `package`.
+    package = parse_packaging(package_data)
 
     # 2. Total.
     #    TODO: call calc_total_units(package) and store it in `total`.
     #    TODO: call get_unit(package) and store it in `unit`.
+    total = calc_total_units(package)
+    unit = get_unit(package)
 
     # 3. Show each level. `package` is a list of one-item dictionaries, so a loop over
     #    it, and a loop over each item's .items(), gives you the name and quantity.
     #    TODO: for each level, st.info(f"{name} ➡️ {quantity}")
+    for p in package:
+        for name, quantity in p.items():
+            st.info(f'{name} ➡️ {quantity}')
 
     # 4. Show the total.
     #    TODO: st.success(f"Total 📦 Size: {total} {unit}")
+    st.success(f'Total 📦 Size: {total} {unit}')
